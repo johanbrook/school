@@ -1,0 +1,3 @@
+class Suv extends Car  {
+	
+}
