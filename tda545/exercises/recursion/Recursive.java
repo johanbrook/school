@@ -212,9 +212,18 @@ class Recursive {
 	}
 	
 	
+	static String strreverse(String str){
+		if(str.length() == 1){
+			return str;
+		}
+		else{
+			return strreverse(str.substring(1)) + str.charAt(0);
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		
-		System.out.println("Binary to decimal: " + bin2int("1011"));
-		System.out.println("Decimal to binary: " + int2bin(16));
+		System.out.println(strreverse("kalle"));
 	}
 }
