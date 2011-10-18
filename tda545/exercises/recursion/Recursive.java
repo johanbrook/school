@@ -187,10 +187,34 @@ class Recursive {
 	}
 	
 	
-	public static void main(String[] args) {
-		int n = 0;
-		int[] a = {1,2,3,4,2,10,8, 20};
+	static String int2bin(int dec){
+
+		if(dec <= 1){
+			return Integer.toString(dec);
+		}
+		else{
+			return int2bin(dec / 2) + Integer.toString(dec % 2);
+		}
+	}
+	
+	
+	static int bin2int(String bin){
+		int factor;
 		
-		System.out.println( same("lol1", "lol1") );
+		if(bin.length() == 1){
+			return Integer.parseInt(bin);
+		}
+		else{
+			factor = Character.getNumericValue(bin.charAt(0));
+			
+			return factor * (int) Math.pow(2, bin.length()-1) + bin2int( bin.substring(1) );
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Binary to decimal: " + bin2int("1011"));
+		System.out.println("Decimal to binary: " + int2bin(16));
 	}
 }
