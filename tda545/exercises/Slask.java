@@ -1,14 +1,9 @@
-import java.util.*;
-
 public class Slask {
-	
 
 	public static void main(String[] args) {
-		int[] ar = {1,2,3};
+		String[] ar = {"Hej", "Da", "Re", "So"};
 		
-		Arrays.fill(ar, 1);
-			
-		for(int s : ar)
+		for(String s : ar)
 			System.out.println(s);
 	}
 }

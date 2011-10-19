@@ -25,6 +25,14 @@ public class BallShape implements Shape {
 		return this.yPos;
 	}
 	
+	public void setX(int x){
+		this.xPos = x;
+	}
+	
+	public void setY(int y){
+		this.yPos = y;
+	}
+	
 	public int getWidth(){
 		return this.width;
 	}

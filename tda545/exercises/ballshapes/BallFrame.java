@@ -16,7 +16,6 @@ public class BallFrame extends JFrame {
 		
 		panel = new BallPanel();
 		
-		
 		JPanel p = new JPanel();
 		
 		label = new JLabel("Set a radius: ");
