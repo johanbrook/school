@@ -222,8 +222,71 @@ class Recursive {
 	}
 	
 	
+	static int countChar(String s, char c){
+		
+		if (s.isEmpty())
+			return 0;
+			
+		else if (s.charAt(0) == c)
+			return 1 + countChar(s.substring(1), c);
+		else
+			return countChar(s.substring(1), c);
+	}
+	
+	
+	static String removeVowels(String s){
+		if(s.isEmpty()){
+			return s;
+		
+		}else{
+			if("aouåeiyäö".indexOf(Character.toLowerCase( s.charAt(0) )) != -1){
+				s = s.replace(s.charAt(0), '\0');
+			}
+			
+			return s.charAt(0) + removeVowels(s.substring(1));
+		}	
+	}
+	
+	
+	static boolean match(String s, String r){
+		System.out.println(s.charAt(0));
+		System.out.println(r.charAt(0));
+		
+		if(s.length() != r.length())
+			return false;
+		if(s.isEmpty() && r.isEmpty())
+			return true;
+		else if(s.isEmpty() || r.isEmpty())
+			return false;
+			
+		if(s.charAt(0) != r.charAt(0) && (s.charAt(0) != '\u003F' && r.charAt(0) != '\u003F') ){
+			return false;
+		}
+		else{
+			return match(s.substring(1), r.substring(1));
+		}
+	}
+	
+	
+	static boolean palindrome(String s){
+		int last = s.length() - 1;
+		
+		if(s.isEmpty())
+			return true;
+		else if(s.length() == 1)
+			return true;
+		
+		if(s.charAt(0) != s.charAt(last)){
+			return false;
+		}
+		else{
+			return palindrome(s.substring(1, last));
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		
-		System.out.println(strreverse("kalle"));
+		System.out.println(palindrome("abba"));
 	}
 }
