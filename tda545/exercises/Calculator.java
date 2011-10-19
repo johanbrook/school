@@ -6,10 +6,6 @@ class Calculator extends JFrame implements ActionListener {
 	
 	private JTextField n1;
 	private JTextField n2;
-	private JButton add;
-	private JButton sub;
-	private JButton div;
-	private JButton mul;
 	
 	private JLabel result;
 	
@@ -22,15 +18,20 @@ class Calculator extends JFrame implements ActionListener {
 		result = new JLabel();
 		add(result, JLabel.CENTER);
 		
-		add = new JButton("Add");
-		sub = new JButton("Sub");
-		div = new JButton("Div");
-		mul = new JButton("Mul");
+		JButton add = new JButton("Add");
+		JButton sub = new JButton("Sub");
+		JButton div = new JButton("Div");
+		JButton mul = new JButton("Mul");
 		
 		add.addActionListener(this);
 		sub.addActionListener(this);
 		div.addActionListener(this);
 		mul.addActionListener(this);
+		
+		add.setActionCommand("add");
+		sub.setActionCommand("sub");
+		div.setActionCommand("div");
+		mul.setActionCommand("mul");
 		
 		n1 = new JTextField(5);
 		n2 = new JTextField(5);
@@ -53,37 +54,42 @@ class Calculator extends JFrame implements ActionListener {
 	}
 	
 	
-	public void actionPerformed(ActionEvent e){
-		Object obj = e.getSource();
+	private void calculate(char operator) throws NumberFormatException {
+		int term1 = Integer.parseInt(n1.getText());
+		int term2 = Integer.parseInt(n2.getText());
+		int r;
 		
-		int term1;
-		int term2;
-		int r = 0;
-		
-		try{
-			term1 = Integer.parseInt(n1.getText());
-			term2 = Integer.parseInt(n2.getText());
-		}
-		catch(NumberFormatException ex){
-			JOptionPane.showMessageDialog(this, "Du måste mata in korrekta tal!");
-			return;
-		}
-		
-		if(obj == add){
-			r = term1 + term2;
-		}
-		else if(obj == sub){
-			r = term1 - term2;
-		}
-		else if(obj == mul){
-			r = term1 * term2;
-		}
-		else if(obj == div){
-			r = term1 / term2;
+		switch(operator){
+			case '-': 	r = term1 - term2; break;
+			case '+':	r = term1 + term2; break;
+			case '*':	r = term1 * term2; break;
+			case '/':	r = term1 / term2; break;
+			default:	r = 0;
 		}
 		
 		result.setText(r + "");
-		result.setBackground(Color.YELLOW);
+		
+	}
+	
+	public void actionPerformed(ActionEvent e){
+		JButton obj = (JButton) e.getSource();
+		char op = '\0';
+		
+		if(obj.getActionCommand().equals("add"))
+			op = '+';
+		else if(obj.getActionCommand().equals("sub"))
+			op = '-';
+		else if(obj.getActionCommand().equals("div"))
+			op = '/';
+		else if(obj.getActionCommand().equals("mul"))
+			op = '*';
+		
+		try{
+			calculate(op);
+		}
+		catch(NumberFormatException ex){
+			JOptionPane.showMessageDialog(this, "Skriv in giltiga tal!");
+		}
 	}
 	
 	public static void main(String[] args) {
