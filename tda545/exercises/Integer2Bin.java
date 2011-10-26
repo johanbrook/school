@@ -6,8 +6,8 @@ class Integer2Bin {
 			throw new NumberFormatException("Otillåtet");
 		}
 		
-		int bit = i % 2;
-		int newI = (int) Math.floor(i / 2);
+		int bit = i % base;
+		int newI = (int) Math.floor(i / base);
 
 		if(newI == 0){
 			return Integer.toString(bit);

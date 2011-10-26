@@ -189,7 +189,7 @@ class Recursive {
 	
 	static String int2bin(int dec){
 
-		if(dec <= 1){
+		if(dec < 2){
 			return Integer.toString(dec);
 		}
 		else{
@@ -209,6 +209,14 @@ class Recursive {
 			
 			return factor * (int) Math.pow(2, bin.length()-1) + bin2int( bin.substring(1) );
 		}
+	}
+	
+	
+	static String nat2base(int n, int base){
+		if(n < 2)
+			return Integer.toString(n);
+		else
+			return nat2base(n / base, base) + Integer.toString(n % base);
 	}
 	
 	
@@ -287,6 +295,6 @@ class Recursive {
 	
 	public static void main(String[] args) {
 		
-		System.out.println(palindrome("abba"));
+		System.out.println(nat2base(10, 2));
 	}
 }

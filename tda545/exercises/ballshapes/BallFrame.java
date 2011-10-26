@@ -31,6 +31,10 @@ public class BallFrame extends JFrame {
 		pack();
 	}
 	
+	public BallPanel getPanel(){
+		return this.panel;
+	}
+	
 	public static void main(String[] args) {
 		BallFrame b = new BallFrame();
 		b.setVisible(true);

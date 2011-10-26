@@ -1,6 +1,7 @@
+import javax.swing.*;
 import java.awt.*;
 
-public class BallShape implements Shape {
+public class BallShape extends JComponent implements Shape {
 	
 	private int xPos;
 	private int yPos;
@@ -15,6 +16,8 @@ public class BallShape implements Shape {
 		this.yPos = y;
 		setRadius(radius);
 		this.color = Color.RED;
+		
+		setVisible(true);
 	}
 	
 	public int getX(){
@@ -53,6 +56,11 @@ public class BallShape implements Shape {
 		this.radius = radius;
 		height = radius * 2;
 		width = radius * 2;
+		setSize(width, height);
+	}
+	
+	public String toString(){
+		return "[color: "+this.color+", Radius: "+this.radius+", X: "+this.xPos+", Y: "+this.yPos+", Width: "+getSize().width+"]";
 	}
 	
 	public void draw(Graphics g){
