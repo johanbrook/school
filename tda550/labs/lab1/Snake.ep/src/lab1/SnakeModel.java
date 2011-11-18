@@ -64,10 +64,13 @@ public class SnakeModel extends GameModel {
 	private final LinkedList<Position> snake = new LinkedList<Position>();
 	
 	/** The starting length of the snake */
-	private final int INITIAL_SNAKE_LENGTH = 3;
+	private final int INITIAL_SNAKE_LENGTH = 20;
 	
 	/** The amount of fruit on the game pane */
 	private final int FRUIT_AMOUNT = 1;
+	
+	/** The size of the board */
+	private final int GAME_BOARD_SIZE = getGameboardSize().height * getGameboardSize().width;
 	
 	/*
 	 * The declaration and object creation above uses the new language feature
@@ -92,6 +95,8 @@ public class SnakeModel extends GameModel {
 	 */
 	public SnakeModel() {
 		Dimension size = getGameboardSize();
+		
+
 
 		// Blank out the whole game board
 		for (int i = 0; i < size.width; i++) {
@@ -113,7 +118,9 @@ public class SnakeModel extends GameModel {
 
 		// Insert the fruits to the game board.
 		for(int i = 0; i < FRUIT_AMOUNT; i++){
-			addFruit();			
+			if(blankTilesExists()){
+				addFruit();			
+			}
 		}
 
 	}
@@ -133,6 +140,8 @@ public class SnakeModel extends GameModel {
 		// ... add a new fruit to the empty tile.
 		setGameboardState(newFruitPos, FRUIT_TILE);
 	}
+	
+	
 
 	/**
 	 * Return whether the specified position is empty.
@@ -181,6 +190,28 @@ public class SnakeModel extends GameModel {
 				break;
 		}
 	}
+	
+	
+	/**
+	 * Checks the game board to see if blank tiles exist.
+	 * 
+	 * @return True if blank tiles exist, otherwise false
+	 */
+	private boolean blankTilesExists(){
+		Dimension gameBoard = getGameboardSize();
+		
+		for(int i = 0; i < gameBoard.width; i++){
+			for(int j = 0; j < gameBoard.height; j++){
+				if(getGameboardState(i, j) == BLANK_TILE){
+					return true;
+				}
+			}
+			
+		}
+		
+		return false;
+	}
+	
 
 	/**
 	 * Get next position of the snake.
@@ -200,6 +231,7 @@ public class SnakeModel extends GameModel {
 	 */
 	@Override
 	public void gameUpdate(final int lastKey) throws GameOverException {
+		
 		updateDirection(lastKey);
 		
 		this.snakePos = getNextSnakePos();
@@ -210,7 +242,11 @@ public class SnakeModel extends GameModel {
 		}
 		
 		// The snake ate a fruit!
-		if(getGameboardState(this.snakePos) == FRUIT_TILE) {
+		if(getGameboardState(this.snakePos) == FRUIT_TILE) {						
+			if(!blankTilesExists()){
+				throw new GameOverException(getScore());
+			}
+			
 			addFruit();
 			score++;
 		}
@@ -248,6 +284,7 @@ public class SnakeModel extends GameModel {
 	public int getScore(){
 		return this.score;
 	}
+	
 
 	/**
 	 * 
