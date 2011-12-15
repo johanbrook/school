@@ -10,6 +10,8 @@ import java.awt.Graphics;
  */
 public class Square extends Rectangle {
 	
+	/** The side of the square */
+	private int side;
 	
 	// Constructors
 	
@@ -37,10 +39,12 @@ public class Square extends Rectangle {
 	
 	
 	/**
-	 * {@inheritDoc}
+	 * Indicates if this square is equal to another square.
+	 * 
+	 * @return True if the squares are equal, otherwise false
 	 */
 	@Override
-	public boolean equals(Object obj) {}
+	public boolean equals(Object obj){}
 	
 	
 }

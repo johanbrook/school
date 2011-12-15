@@ -49,6 +49,17 @@ public class Line extends Shape {
 	public Line(GeometricalForm f1, GeometricalForm f2, Color c) {}
 	
 	
+	/**
+		 * Calculate and set instance variables delta x,
+		 * delta y, and the boolean slope variable.
+		 * 
+		 * @param x1 X1
+		 * @param y1 Y1
+		 * @param x2 X2
+		 * @param y2 Y2
+	 */
+	private void calculateDeltaAndSlope(int x1, int y1, int x2, int y2) {}
+	
 	
 	// Public methods
 	

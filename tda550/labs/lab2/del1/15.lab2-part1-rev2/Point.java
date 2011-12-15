@@ -1,63 +1,54 @@
 package geometri;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 
 /**
- * A class describing a rectangle.
+ * A class describing a single point.
  * 
  * @author Johan Brook and Robin Andersson
  */
-public class Rectangle extends Shape {
+public class Point extends Shape {
 	
-	// Instance variables
+	// Constants
 	
-	/** The width */
-	private int width;
-	
-	/** The height */
-	private int height;
+	private final int POINT_SIZE = 1;
 	
 	
 	// Constructors
 	
 	/**
-	 * Create a new <code>Rectangle</code> based on a position, width,
-	 * height, and a color.
+	 * Create a new <code>Point</code> on a position.
 	 * 
 	 * @param x The X coordinate
 	 * @param y The Y coordinate
-	 * @param width The width
-	 * @param height The height
-	 * @param color The color
+	 * @param c The color
 	 * @throws IllegalPositionException If the coordinates are negative
 	 */
-	public Rectangle(int x, int y, int width, int height, Color color) 
+	public Point(int x, int y, Color c) 
 			throws IllegalPositionException {}
-
+	
 	/**
-	 * Create a new <code>Rectangle</code> based on a given
-	 * <code>GeometricalForm</code>. 
+	 * Create a new <code>Point</code> based on an existing
+	 * <code>GeometricalForm</code>.
 	 * 
 	 * @param f The given form
-	 * @param width The width
-	 * @param height The height
 	 * @param c The color
 	 */
-	public Rectangle(GeometricalForm f, int width, int height, Color c) {}
-
+	public Point(GeometricalForm f, Color c) {}
+	
 	
 	// Public methods
 	
 	/**
 	 * {@inheritDoc}
+	 * @return The area for a <code>Point</code> is 0 (zero).
 	 */
 	@Override
 	public int area() {}
 
 
 	/**
-	 * <p>Fill a square.</p>
+	 * <p>Draw a point.</p>
 	 * 
 	 * {@inheritDoc}
 	 */
@@ -66,6 +57,7 @@ public class Rectangle extends Shape {
 
 	/**
 	 * {@inheritDoc}
+	 * @return The perimeter of a <code>Point</code> is 0 (zero).
 	 */
 	@Override
 	public int perimeter() {}

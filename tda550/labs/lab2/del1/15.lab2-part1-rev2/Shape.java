@@ -77,7 +77,6 @@ public abstract class Shape implements GeometricalForm {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public int compareTo(GeometricalForm f) {}
 	
 	

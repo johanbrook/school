@@ -1,17 +1,19 @@
 package geometri;
 
-// TODO Skriv i Readme om att Square kör på rectangles equals och hashcode
-
 import java.awt.Color;
+import java.awt.Graphics;
 
 /**
- * A class describing a square with a side.
+ * A class describing a square.
  * 
  * @author Johan Brook and Robin Andersson
  */
 public class Square extends Rectangle {
 	
+	/** The side of the square */
 	private int side;
+	
+	// Constructors
 	
 	/**
 	 * Create a new <code>Square</code> with a side length. 
@@ -22,10 +24,8 @@ public class Square extends Rectangle {
 	 * @param color The color
 	 * @throws IllegalPositionException If the coordinates are negative
 	 */
-	public Square(int x, int y, int side, Color color) throws IllegalPositionException {
-		super(x, y, side, side, color);
-		this.side = side;
-	}
+	public Square(int x, int y, int side, Color color) 
+			throws IllegalPositionException {}
 
 	/**
 	 * Create a new <code>Square</code> based on an existing
@@ -35,11 +35,11 @@ public class Square extends Rectangle {
 	 * @param side The side length
 	 * @param c The color
 	 */
-	public Square(GeometricalForm f, int side, Color c) {
-		super(f, side, side, c);
-		this.side = side;
-	}
-
-
+	public Square(GeometricalForm f, int side, Color c) {}
+	
+	
+	
+	@Override
+	public int hashCode() {}
 	
 }

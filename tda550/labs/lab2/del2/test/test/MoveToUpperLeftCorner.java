@@ -110,6 +110,9 @@ public class MoveToUpperLeftCorner
      //  Coordinates and colour are choosed at random.
       int   x = (int)Math.round( Math.random()*600);
       int   y = (int)Math.round( Math.random()*600);
+	  //int x = 110;
+	  //int y = 200;
+	  
       Color c = new Color( (int)Math.round(Math.random()*255),
                            (int)Math.round(Math.random()*255),
                            (int)Math.round(Math.random()*255) );
@@ -130,10 +133,19 @@ public class MoveToUpperLeftCorner
           }
           }
           else if ( e.getSource() == line ) {
+        	  int lineX = (int) Math.round( Math.random()*700);
+        	  int lineY = (int) Math.round( Math.random()*700);
+        	  //int lineX = 90;
+        	  //int lineY = 300;
+        	  
+        	  System.out.println(x + " - " +lineX);
+        	  System.out.println(y + " - " + lineY);
+        	  System.out.println( (double) (lineX - x) / (lineY - y) < 0);
+        	  
               if ( forms.add( new Line( x,
                                         y,
-                                        (int)Math.round( Math.random()*700),
-                                        (int)Math.round( Math.random()*700),
+                                        lineX,
+                                        lineY,
                         c                                   )) )
               JOptionPane.showMessageDialog( this,  "A new random line is created." );
               else
